@@ -72,9 +72,9 @@ struct Node* search(struct Node* root, int key) {
 
 void inorder(struct Node* root) {
     if (root == NULL) return;
-    inorder(root->left);
-    printf("%d ", root->key);
     inorder(root->right);
+    printf("%d ", root->key);
+    inorder(root->left);
 }
 
 void preorder(struct Node* root) {
@@ -110,13 +110,13 @@ int main(void) {
     struct Node* root = NULL; // Empezamos con un árbol vacío
 
     // Insertar claves de ejemplo. El orden de inserción produce el siguiente árbol:
-    //         50
+    //         76
     //        /  \
-    //      30    70
+    //      33    80
     //     /  \  /  \
-    //   20  40 60  80
+    //   10  20 50  12
 
-    int keys[] = {50, 30, 70, 20, 40, 60, 80};
+    int keys[] = {76, 33, 80, 10, 20, 50, 12};
     size_t n = sizeof(keys) / sizeof(keys[0]);
     for (size_t i = 0; i < n; ++i) {
         root = insert(root, keys[i]);
@@ -136,7 +136,7 @@ int main(void) {
     printf("\n");
 
     // Buscar un valor existente y uno no existente
-    int to_find1 = 60;
+    int to_find1 = 10;
     int to_find2 = 25;
 
     struct Node* found1 = search(root, to_find1);
